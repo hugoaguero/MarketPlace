@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MarketPlace</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/components.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+<body style="background-image: linear-gradient( 135deg, #736EFE 10%, #5EFCE8 100%); display: flex; flex-direction: column; height: 100%;">
+    <header>
+        <nav style="background-image: linear-gradient( 65.9deg, rgba(85,228,224,1) 5.5%, rgba(75,68,224,0.74) 54.2%, rgba(64,198,238,1) 55.2%, rgba(177,36,224,1) 98.4% );"
+             class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand text-shadow-h1-mini text-dark" asp-area="" asp-controller="Home" asp-action="Index"><img src=https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/box-seam.svg width="32" height="32" alt="logo" class="pulsate-fwd"> MKP</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Brands" asp-action="Index">Brands</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Suppliers" asp-action="Index">Suppliers</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                    <a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer style="background-image: linear-gradient( 65.9deg, rgb(0 255 193) 0%, rgba(85,228,224,1) 25.5%, rgba(75,68,224,0.74) 74.2%, rgba(64,198,238,1) 75.2%, rgba(177,36,224,1) 118.4% ); " class="border-top footer">
+        <div class="container">
+            &copy; <strong>2021 - MarketPlace</strong> | UTN - TUP / Laboratorio IV | <strong class="">Hugo Aguero Arrieta</strong>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

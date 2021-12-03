@@ -1,0 +1,58 @@
+﻿@model MarketPlace.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1  class="text-shadow-h1-top">Create product</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Name" class="form-control border-dark" placeholder="@Html.DisplayNameFor(model => model.Name)" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Price" type="number" step="0.01" min="0.01" class="form-control border-dark" placeholder="@Html.DisplayNameFor(model => model.Price)" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Description" class="form-control border-dark" placeholder="@Html.DisplayNameFor(model => model.Description)" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-inline">
+                <label class="control-label">Select image</label>
+                <br />
+                <img src="" id="image" class="img-thumbnail"
+                     style="max-height: 96px; max-width: 140px;"
+                     asp-append-version="true" />
+                <br />
+                <br />
+                <input asp-for="Image" type="file" accept=".png, .jpg, .jpeg" id="selectImage" name="Image" class="control-label" placeholder="@Html.DisplayNameFor(model => model.Image)" />
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input border-dark" asp-for="Favorite" /> @Html.DisplayNameFor(model => model.Favorite)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoryId" class="control-label border-dark">@Html.DisplayNameFor(model => model.Category.Name) <select asp-for="categoryId" class="form-control border-dark" asp-items="ViewBag.categoryId"></select></label>
+                <label asp-for="brandId" class="control-label border-dark">@Html.DisplayNameFor(model => model.Brand.Name) <select asp-for="brandId" class="form-control border-dark" asp-items="ViewBag.brandId"></select></label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary btn-sm border-dark" />
+                <a asp-action="Index" class="btn btn-success btn-sm border-dark">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="~/js//preview.js"></script>

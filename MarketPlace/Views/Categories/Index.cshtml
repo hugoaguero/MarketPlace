@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MarketPlace.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-shadow-h1-top">Category list</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-dark btn-sm border-dark">Create Category</a>
+</p>
+<div class="card shadow-lg mb-4" style="background-image: linear-gradient( 109.6deg, rgba(209,158,246,1) 11.2%, rgba(93,219,241,1) 91.1% ); ">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Code
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    Options
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="small font-weight-bolder">
+                        C.@Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a class="btn btn-secondary btn-sm border-dark" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm border-dark" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

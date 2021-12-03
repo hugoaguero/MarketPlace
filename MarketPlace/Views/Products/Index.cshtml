@@ -1,0 +1,65 @@
+﻿@model MarketPlace.ViewsModels.ProductsViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-shadow-h1-top">Products list</h1>
+<p>
+    <a asp-action="Create" class="btn btn-dark btn-sm border-dark">Create Product</a>
+</p>
+<hr />
+<form asp-action="Index" method="get">
+    <h4 class="">Search by:</h4>
+    <div class="form-row align-items-center">
+        <div class="form-row">
+            <div class="col-auto my-1 col-form-label-sm">
+                <label>@Html.DisplayNameFor(model => model.Categories)</label>
+                <select asp-items="@Model.Categories" class="form-control border-dark" name="categoryId">
+                    <option value="">All</option>
+                </select>
+            </div>
+            <div class="col-auto my-1 col-form-label-sm">
+                <label>@Html.DisplayNameFor(model => model.Name)</label>
+                <input asp-for="@Model.Name" class="form-control border-dark" type="text" name="searchByName">
+            </div>
+        </div>
+        <div class="col-auto my-1">
+            <input type="submit" class="btn btn-light btn-sm shadow-lg border-dark" value="Filter">
+        </div>
+    </div>
+</form>
+<hr />
+@if (Model.Products.Count() == 0)
+{
+    <h4 class="text-muted">No matches or uploaded products found!</h4>
+}
+else
+{
+    <div class="card-deck">
+        <div class="swing-in-bottom-fwd">
+            <div class="row">
+                @foreach (var item in Model.Products)
+                {
+                    <div class="perspective-left col-sm-3">
+                        <a class="card border-dark mb-3 text-center text-decoration-none text-dark shadow-lg" asp-action="Details" asp-route-id="@item.Id" style="width: 15rem;">
+                            <div style="background-image: radial-gradient( circle farthest-corner at -4% -12.9%, rgba(74,98,110,1) 0.3%, rgba(30,33,48,1) 90.2% );" class="card-header text-left text-white bg-dark mb-3">
+                                <h5><img style="filter: invert(100%);" src=https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/handbag.svg width="16" height="16" alt=""> | @Html.DisplayFor(modelItem => item.Category.Name)
+                                    <br />
+                                    <small class="text-muted">(Cod. @Html.DisplayFor(modelItem => item.categoryId)@Html.DisplayFor(modelItem => item.brandId)@Html.DisplayFor(modelItem => item.Id))</small>
+                                </h5>
+                            </div>
+                            <img class="card-img-top img-responsive my-3 mx-auto" src="~/images/products/@item.Image" alt="MarketPlace - Product image" style="max-width: 100px; max-height: 100px;">
+                            <div class="card-body">
+                                <h5 class="card-title small text-uppercase">@Html.DisplayFor(modelItem => item.Name)</h5>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <p class="card-text"><small class="text-muted">$@Html.DisplayFor(modelItem => item.Price)</small></p>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

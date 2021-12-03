@@ -1,0 +1,33 @@
+﻿@model MarketPlace.Models.SupplierProduct
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>SupplierProduct</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="supplierId" class="control-label"></label>
+                <select asp-for="supplierId" class ="form-control" asp-items="ViewBag.supplierId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="productId" class="control-label"></label>
+                <select asp-for="productId" class ="form-control" asp-items="ViewBag.productId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-success">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

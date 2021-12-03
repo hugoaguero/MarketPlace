@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MarketPlace.Models.Product>
+
+@{ ViewData["Title"] = "Home Page"; }
+
+<div class="text-center">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <h1 style="color: #E6E6FA; " class="display-1 font-weight-bold text-shadow-h1 text-pop-up-top">MarketPlace<small class="text-black-50">.com</small></h1>
+    <br />
+    <br />
+    <div class="card-deck swing-in-bottom-fwd">
+        <div class="rotate-in-2-cw">
+            @if (Model.Count() > 0)
+            {
+                <div class="row">
+                    <h4><small class="text-uppercase pulsate-fwd">Favorite Products!</small></h4>
+                </div>
+            }
+            <div class="row">
+                @foreach (var item in Model)
+                {
+        <a class="card border-dark text-center text-decoration-none text-dark shadow-lg" asp-controller="Products" asp-action="Details" asp-route-id="@item.Id" style="width: 10rem;">
+            <div class="card-body">
+                <img style="filter: sepia(100%);" src=https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/heart.svg width="32" height="32" alt="Favorite" class="align-content-around pulsate-fwd">
+            </div>
+                <img class="card-img-top img-responsive my-3 mx-auto" src="~/images/products/@item.Image" alt="MarketPlace - Product image" style="max-width: 120px;">
+            <div style="background-image: radial-gradient( circle farthest-corner at -4% -12.9%, rgba(74,98,110,1) 0.3%, rgba(30,33,48,1) 90.2% ); font-size: 10px;" class="card-footer text-light">
+                <h6><small class="text-uppercase">@Html.DisplayFor(modelItem => item.Name)</small></h6>
+            </div>
+        </a>}
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <p class="">
+        <strong class="text-muted">mkp.com</strong> is a local commerce leader that connects millions of buyers and sellers in more than 252 markets around the country.<br />
+        We exist to enable economic opportunity for individuals, entrepreneurs, businesses and organizations of all sizes.
+    </p>
+</div>
+
+

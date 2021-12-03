@@ -1,0 +1,70 @@
+﻿@model MarketPlace.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-shadow-h1-top">Product details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Code
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.categoryId)@Html.DisplayFor(model => model.brandId)@Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            $@Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(@Model.Image))
+            {
+    <img src="~/images/products/@Model.Image" class="img-thumbnail border-dark"
+         style="max-height: 96px; max-width: 96px;"
+         asp-append-version="true" />            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Favorite)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Favorite)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Brand.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-secondary btn-sm border-dark" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a class="btn btn-danger btn-sm border-dark" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    <a class="btn btn-success btn-sm border-dark" asp-action="Index" >Back to List</a>
+</div>
